@@ -1,17 +1,6 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
-
-<p id="widget" data-unavailable="<%= @item.unavailable_dates.to_json %>"></p>
-
-<%= simple_form_for [ @item, @booking ] do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
-  <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
-  <%= f.submit "Book", class: "btn btn-primary" %>
+<% @items.each do |item| %>
+  <p>Book this item: <%= link_to item.name, item_path(item) %></p>
 <% end %>
 
-<% @bookings.each do |booking| %>
-  <p><%= booking.item.name %></p>
-  <p><%= booking.start_date %></p>
-  <p><%= booking.end_date %></p>
-<% end %>

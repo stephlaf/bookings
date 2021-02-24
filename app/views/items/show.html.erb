@@ -1,0 +1,16 @@
+<h1>Item name: <%= @item.name %></h1>
+
+<p id="widget" data-unavailable="<%= @item.unavailable_dates.to_json %>"></p>
+
+<%= simple_form_for [ @item, @booking ] do |f| %>
+  <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
+  <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
+
+  <%= f.submit "Book", class: "btn btn-primary" %>
+<% end %>
+
+<h4>Bookings:</h4>
+<% @bookings.each do |booking| %>
+  <p>From: <%= booking.start_date %> to <%= booking.end_date %></p>
+<% end %>
+
