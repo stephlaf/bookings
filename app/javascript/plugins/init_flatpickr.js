@@ -12,13 +12,15 @@ const dateStuff = () => {
   if (widget) {
     const unvailableDates = JSON.parse(widget.dataset.unavailable)
 
-    flatpickr('#start_date', {
+    const fp = flatpickr('#start_date', {
       disable: unvailableDates,
       minDate: 'today',
       altInput: true,
       "plugins": [new rangePlugin({ input: '#end_date'})]
       // enableTime: true
     });
+
+    console.log(fp.selectedDates);
   }
 };
 

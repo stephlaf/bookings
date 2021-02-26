@@ -27,8 +27,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { dateStuff } from '../plugins/init_flatpickr';
+import { getDates } from '../components/calculate_price_from_dates';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   dateStuff();
+  getDates();
 });
