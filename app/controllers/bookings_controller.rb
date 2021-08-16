@@ -1,8 +1,10 @@
 class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    @booking.item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
+    @booking.item = @item
+    @booking.renter = current_user
+    # @booking.owner = @item.user
     @booking.save!
     redirect_to item_path(@booking.item)
   end
