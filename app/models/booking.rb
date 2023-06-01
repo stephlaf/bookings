@@ -3,8 +3,18 @@ class Booking < ApplicationRecord
   # belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
   belongs_to :renter, class_name: 'User', foreign_key: 'renter_id'
 
-  validates :start_date, :end_date, presence: true, availability: true
+  # validates :start_date, :end_date, presence: true, availability: true
   validate :end_date_after_start_date
+
+  def status_to_s
+    if status.nil?
+      "Pending"
+    elsif status
+      "Accepted"
+    else
+      "Declined"
+    end
+  end
 
   private
 

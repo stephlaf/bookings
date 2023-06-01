@@ -1,3 +1,5 @@
+Booking.destroy_all
+Item.destroy_all
 User.destroy_all
 
 User.create!(email: 'a@a.a', password: '123456')

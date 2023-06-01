@@ -9,6 +9,20 @@ class BookingsController < ApplicationController
     redirect_to item_path(@booking.item)
   end
 
+  def my_bookings
+    @my_bookings = current_user.owner_bookings
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status].to_i.zero? ? false : true
+    if @booking.save
+      redirect_to my_bookings_path
+    else
+      render :my_bookings
+    end
+  end
+
   private
 
   def booking_params

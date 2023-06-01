@@ -1,0 +1,14 @@
+<h1>My Owner Bookings</h1>
+
+<% @my_bookings.each do |booking| %>
+  <div class="container">
+    <p>From: <%= booking.start_date %> To: <%= booking.end_date %></p>
+    <p>Renter: <%= booking.renter.email %></p>
+    <p>Status: <%= booking.status_to_s %></p>
+    <%= button_to 'Accept', booking_path(booking),
+                            method: 'patch', params: { status: 1 } %>
+    <%= button_to 'Decline', booking_path(booking),
+                            method: 'patch', params: { status: 0 } %>
+  </div>
+
+<% end %>
